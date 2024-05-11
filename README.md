@@ -19,7 +19,7 @@ The Website Tracker Chrome Extension is a tool designed to help users track thei
 
 3. Enable Developer mode in the top right corner.
 
-4. Click on "Load unpacked" and select the directory where you cloned/downloaded this repository.
+4. Click on "Load unpacked" and select the directory where you cloned/downloaded this repository. Go to extension folder and select that folder.
 
 5. The extension should now be installed and visible in your Chrome browser toolbar.
 
