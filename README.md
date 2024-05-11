@@ -2,11 +2,14 @@
 
 The Website Tracker Chrome Extension is a tool designed to help users track their browsing activity and manage their time spent on various websites.
 
-## Features
+## Features given 
 
 - **Browsing Activity Tracking**: Tracks time spent on each website and specific parts of the website.
 - **Productive Browsing**: Allows users to add and delete websites to restricted lists and set time limits on websites.
 - **Personalized Dashboard**: Provides users with a personalized dashboard to view their website usage and analytics.
+
+## Implemented Features
+- **Browsing Activity Tracking**: Tracks time spent on each website and specific parts of the website.
 
 ## Installation
 
@@ -29,5 +32,12 @@ The Website Tracker Chrome Extension is a tool designed to help users track thei
 - Restricted websites will be blocked when accessed, and users will see a blocked message.
 - The extension automatically tracks your browsing activity in the background.
 
-## Only the time spent on websites is being perfectly implemented.
+## Only the time spent on websites (browsing activity tracking) is being perfectly implemented.
 
+## Values to society
+- Promoting Productivity: Empowers individuals to manage their time effectively and maximize productivity.
+- Reducing Distractions: Minimizes time spent on non-essential websites, helping users stay focused on their goals.
+- Encouraging Mindful Internet Usage: Promotes conscious decision-making regarding online activities, fostering a healthier relationship with technology.
+- Enhancing Digital Well-being: Supports a balanced lifestyle by reducing excessive screen time and promoting digital wellness.
+- Empowering Self-improvement: Provides tools for users to make positive changes in their digital habits and routines.
+- Building a Community of Accountability: Fosters a supportive community focused on mutual growth and development in digital wellness.
