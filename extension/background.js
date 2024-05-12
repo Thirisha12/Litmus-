@@ -43,9 +43,8 @@ chrome.windows.onRemoved.addListener(() => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.message === "getWebsiteData") {
         chrome.storage.local.get("websites", (data) => {
-            sendResponse(data.websites); // Send the data back to the popup script
+            sendResponse(data.websites); 
         });
-        // Return true to indicate that sendResponse will be called asynchronously
         return true;
     }
 });
@@ -56,11 +55,10 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 let intervalId;
 
-// Event listener for tab activation
 chrome.tabs.onActivated.addListener(({ tabId }) => {
     // console.log("Tab activated:", tabId);
-    clearInterval(intervalId); // Clear any existing interval
-    intervalId = setInterval(() => updateTimeSpent(tabId), 1000); // Set interval to update time spent
+    clearInterval(intervalId); 
+    intervalId = setInterval(() => updateTimeSpent(tabId), 1000); 
 });
 
 function updateTimeSpent(tabId) {
@@ -87,9 +85,7 @@ function updateTimeSpent(tabId) {
     });
 }
 
-// background.js
 
-// Function to block access to restricted sites
 function blockAccessToRestrictedSites(details) {
     const { url } = details;
     chrome.storage.local.get("websites", data => {
@@ -109,7 +105,6 @@ chrome.webRequest.onBeforeRequest.addListener(
     ["blocking"]
 );
 
-// Function to set time limits on websites
 function setTimeLimits(website, timeLimit) {
     chrome.storage.local.get("websites", data => {
         const { websites } = data || {};
@@ -120,7 +115,6 @@ function setTimeLimits(website, timeLimit) {
     });
 }
 
-// Function to automatically close tabs when time limit is exceeded
 function closeTabIfTimeLimitExceeded(tabId, website) {
     chrome.storage.local.get("websites", data => {
         const { websites } = data || {};
@@ -134,13 +128,11 @@ function closeTabIfTimeLimitExceeded(tabId, website) {
     });
 }
 
-// Event listener for tab activation
 chrome.tabs.onActivated.addListener(({ tabId }) => {
     clearInterval(intervalId); // Clear any existing interval
-    intervalId = setInterval(() => updateTimeSpent(tabId), 1000); // Set interval to update time spent
+    intervalId = setInterval(() => updateTimeSpent(tabId), 1000);
 });
 
-// Function to add or remove websites from restricted list
 function toggleRestrictedWebsite(hostname, isRestricted) {
     chrome.storage.local.get("websites", data => {
         const { websites } = data || {};
@@ -160,7 +152,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const { website, timeLimit } = message;
         setTimeLimits(website, timeLimit);
     }
-    sendResponse(); // Send an empty response
+    sendResponse(); 
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -168,5 +160,5 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const { hostname, isRestricted } = message;
         toggleRestrictedWebsite(hostname, isRestricted);
     }
-    sendResponse(); // Send an empty response
+    sendResponse();
 });
