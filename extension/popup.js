@@ -16,7 +16,7 @@ function renderTimeData(websiteData) {
         for (const [website, time] of Object.entries(websiteData)) {
             const websiteInfo = document.createElement("p");
             // websiteInfo.textContent = `${website}: ${formatTime(time)}`;
-            container.appendChild(websiteInfo); // Here's where container is used
+            container.appendChild(websiteInfo); 
         }
     }
 }
@@ -60,9 +60,6 @@ chrome.storage.local.get("websites", (data) => {
     }
 });
 
-// popup.js
-
-// Function to send message to background script to toggle restricted website
 function toggleRestrictedWebsite(hostname, isRestricted) {
     chrome.runtime.sendMessage({ message: "toggleRestrictedWebsite", hostname, isRestricted });
 }
@@ -71,29 +68,21 @@ function toggleRestrictedWebsite(hostname, isRestricted) {
 function setTimeLimit(website, timeLimit) {
     chrome.runtime.sendMessage({ message: "setTimeLimit", website, timeLimit });
 }
-
-// Event listener for form submission to set time limit for a website
 document.getElementById("setTimeLimitForm").addEventListener("submit", function(event) {
     event.preventDefault();
     const website = document.getElementById("website").value;
-    const timeLimit = parseInt(document.getElementById("timeLimit").value) * 60 * 1000; // Convert minutes to milliseconds
+    const timeLimit = parseInt(document.getElementById("timeLimit").value) * 60 * 1000; 
     setTimeLimit(website, timeLimit);
-    // Clear the input fields after setting time limit
     document.getElementById("website").value = "";
     document.getElementById("timeLimit").value = "";
 });
 
-// Function to handle adding website to restricted list
 function addWebsiteToRestrictedList() {
     const hostname = document.getElementById("hostname").value;
     toggleRestrictedWebsite(hostname, true);
-    // Clear the input field after adding the website
     document.getElementById("hostname").value = "";
 }
 
-// popup.js
-
-// Function to render the list of restricted websites
 function renderRestrictedWebsites(websites) {
     const listContainer = document.getElementById("restrictedWebsiteList");
     listContainer.innerHTML = "";
@@ -113,7 +102,6 @@ function renderRestrictedWebsites(websites) {
     }
 }
 
-// Fetch restricted websites from storage and render them
 chrome.storage.local.get("websites", data => {
     const { websites } = data || {};
     renderRestrictedWebsites(websites);
