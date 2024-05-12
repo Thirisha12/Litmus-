@@ -1,5 +1,2 @@
-
-module ApplicationCable
-  class Connection < ActionCable::Connection::Base
-  end
+class ApplicationController < ActionController::Base
 end
