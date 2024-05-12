@@ -1,15 +1,13 @@
-// content.js
 
 let intervalId;
 
 // Event listener for tab activation
 chrome.tabs.onActivated.addListener(({ tabId }) => {
     console.log("Tab activated:", tabId);
-    clearInterval(intervalId); // Clear any existing interval
-    intervalId = setInterval(() => updateTimeSpent(tabId), 1000); // Set interval to update time spent
+    clearInterval(intervalId); 
+    intervalId = setInterval(() => updateTimeSpent(tabId), 1000); 
 });
 
-// Function to update time spent on websites
 function updateTimeSpent(tabId) {
     chrome.storage.local.get("websites", data => {
         console.log("Retrieved websites from local storage:", data);
@@ -31,9 +29,8 @@ function updateTimeSpent(tabId) {
     });
 }
 
-// Event listener for window blur (when user switches to another window or tab)
 window.addEventListener('blur', () => {
-    clearInterval(intervalId); // Clear interval when window is blurred
+    clearInterval(intervalId);
     console.log("Window blurred, interval cleared");
 });
 
